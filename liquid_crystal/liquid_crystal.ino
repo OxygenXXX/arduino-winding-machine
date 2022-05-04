@@ -4,7 +4,7 @@
 #define LCD_PIN_ENABLED 2 // SELECT
 
 #define LCD_DISPLAY_WIDTH 16 // Display width
-#define LCD_DISPLAY_HEIGTH 2 // Display height
+#define LCD_DISPLAY_HEIGHT 2 // Display height
 
 #define LCD_PIN_DATA1 4 // SELECT
 #define LCD_PIN_DATA2 5 // SELECT
@@ -24,6 +24,8 @@ struct LiquidDisplayBase
 {
     LiquidDisplayBase()
     {
+        LCD_CONTROLLER.begin(LCD_DISPLAY_WIDTH, LCD_DISPLAY_HEIGHT);
+      
         LCD_CONTROLLER.home(); // Set cursor to home pos
 
         LCD_CONTROLLER.autoscroll(); // Enable text scrolling
