@@ -22,13 +22,19 @@ LiquidCrystal LCD_CONTROLLER
 
 struct LiquidDisplayBase
 {
+    public:
+  
     LiquidDisplayBase()
     {
-        LCD_CONTROLLER.begin(LCD_DISPLAY_WIDTH, LCD_DISPLAY_HEIGHT);
+        LCD_CONTROLLER.begin
+        (
+          LCD_DISPLAY_WIDTH, // Set display width
+          LCD_DISPLAY_HEIGHT // Set display height
+        );
       
         LCD_CONTROLLER.home(); // Set cursor to home pos
 
-        LCD_CONTROLLER.autoscroll(); // Enable text scrolling
+        LCD_CONTROLLER.noAutoscroll(); // Disable text scrolling
         LCD_CONTROLLER.noBlink(); // Disable cursor blinking
-    }
+    }    
 };
