@@ -7,13 +7,13 @@ class LiquidScreen
     #define LCD_DISPLAY_WIDTH 16
     #define LCD_DISPLAY_HEIGTH 2
 
-    #define LCD_PIN_REGSELECT // SELECT //
-    #define LCD_PIN_ENABLED // SELECT //
+    #define LCD_PIN_REGSELECT 1 // SELECT
+    #define LCD_PIN_ENABLED 2 // SELECT
 
-    #define LCD_PIN_DATA1 // SELECT //
-    #define LCD_PIN_DATA2 // SELECT //
-    #define LCD_PIN_DATA3 // SELECT //
-    #define LCD_PIN_DATA4 // SELECT //
+    #define LCD_PIN_DATA1 4 // SELECT
+    #define LCD_PIN_DATA2 5 // SELECT
+    #define LCD_PIN_DATA3 6 // SELECT
+    #define LCD_PIN_DATA4 7 // SELECT
 
     LiquidCrystal LCD_CONTROLLER
     (
