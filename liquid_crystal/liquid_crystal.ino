@@ -1,6 +1,6 @@
 #include <LiquidCrystal.h>
 
-class LiquidCrystalBase
+class LiquidScreen
 {
     public:
 
@@ -15,20 +15,18 @@ class LiquidCrystalBase
     #define LCD_PIN_DATA3 // SELECT //
     #define LCD_PIN_DATA4 // SELECT //
 
-    LiquidCrystal LCD_CONTROLLER;
+    LiquidCrystal LCD_CONTROLLER
+    (
+        LCD_PIN_REGSELECT,
+        LCD_PIN_ENABLED,
 
-    LiquidCrystalBase()
+        LCD_PIN_DATA1, LCD_PIN_DATA2,
+        LCD_PIN_DATA3, LCD_PIN_DATA4
+    );
+
+    LiquidScreen()
     {
-        this->LCD_CONTROLLER = new LiquidCrystal
-        (
-            LCD_PIN_REGSELECT,
-            LCD_PIN_ENABLED,
-
-            LCD_PIN_DATA1, LCD_PIN_DATA2,
-            LCD_PIN_DATA3, LCD_PIN_DATA4
-        );
-
         this->LCD_CONTROLLER.noBlink(); // Disable cursor blinking
         this->LCD_CONTROLLER.autoscroll(); // Enable text scrolling
     }
-}
+};
