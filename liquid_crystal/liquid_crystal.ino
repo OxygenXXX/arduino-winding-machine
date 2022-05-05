@@ -20,21 +20,16 @@ LiquidCrystal LCD_CONTROLLER
     LCD_PIN_DATA3, LCD_PIN_DATA4
 );
 
-struct LiquidDisplayBase
+void LiquidDisplayInit()
 {
-    public:
-  
-    LiquidDisplayBase()
-    {
-        LCD_CONTROLLER.begin
-        (
-          LCD_DISPLAY_WIDTH, // Set display width
-          LCD_DISPLAY_HEIGHT // Set display height
-        );
-      
-        LCD_CONTROLLER.home(); // Set cursor to home pos
+    LCD_CONTROLLER.begin
+    (
+        LCD_DISPLAY_WIDTH, // Set display width
+        LCD_DISPLAY_HEIGHT // Set display height
+    );
+    
+    LCD_CONTROLLER.home(); // Set cursor to home pos
 
-        LCD_CONTROLLER.noAutoscroll(); // Disable text scrolling
-        LCD_CONTROLLER.noBlink(); // Disable cursor blinking
-    }    
-};
+    LCD_CONTROLLER.noAutoscroll(); // Disable text scrolling
+    LCD_CONTROLLER.noBlink(); // Disable cursor blinking
+}    
