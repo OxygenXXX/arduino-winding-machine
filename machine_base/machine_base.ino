@@ -1,5 +1,4 @@
 #include <LiquidCrystal.h>
-#include <MenuSystem.h>
 
 #define LCD_PIN_REGSELECT 8 // SELECT
 #define LCD_PIN_ENABLED 9 // SELECT
@@ -23,10 +22,12 @@ LiquidCrystal LCD_CONTROLLER
 
 #define LCD_SHIELD_BUTTON A0
 
-#define LCD_SHIELD_BUTTON_RIGTH 0
-#define LCD_SHIELD_BUTTON_LEFT 0
-#define LCD_SHIELD_BUTTON_UP 0
-#define LCD_SHIELD_BUTTON_DOWN 0
+#define LCD_SHIELD_BUTTON_RIGTH 1
+#define LCD_SHIELD_BUTTON_LEFT 2
+#define LCD_SHIELD_BUTTON_UP 3
+#define LCD_SHIELD_BUTTON_DOWN 4
+
+#define LCD_SHIELD_NO_BUTTON 0
 
 void LiquidDisplayInit()
 {
@@ -44,59 +45,71 @@ void LiquidDisplayInit()
 
 void LCD_MENU_SECTION_MAIN()
 {
-  LCD_CONTROLLER.clear();
-  LCD_CONTROLLER.setCursor(0, 0);
-
-  LCD_CONTROLLER.print("Menu Main");
+    LCD_CONTROLLER.clear();
+    LCD_CONTROLLER.setCursor(0, 0);
+  
+    LCD_CONTROLLER.print("Menu Main");
 }
 
 void LCD_MENU_SECTION1()
 {
-  LCD_CONTROLLER.clear();
-  LCD_CONTROLLER.setCursor(0, 0);
-
-  LCD_CONTROLLER.print("Menu Sec 1");
-
-  delay(1500);
+    LCD_CONTROLLER.clear();
+    LCD_CONTROLLER.setCursor(0, 0);
+  
+    LCD_CONTROLLER.print("Menu Sec 1");
+  
+    delay(1500);
 }
 
 void LCD_MENU_SECTION2()
 {
-  LCD_CONTROLLER.clear();
-  LCD_CONTROLLER.setCursor(0, 0);
-
-  LCD_CONTROLLER.print("Menu Sec 2");
-
-  delay(1500);
+    LCD_CONTROLLER.clear();
+    LCD_CONTROLLER.setCursor(0, 0);
+  
+    LCD_CONTROLLER.print("Menu Sec 2");
+  
+    delay(1500);
 }
 
-unsigned short BUTTON_INPUT_HANDLER()
+unsigned short BUTTON_INPUT_HANDLER(unsigned short BUTTON_CODE)
 {
-  
+    if(BUTTON_CODE < 100)
+    {
+        return LCD_SHIELD_BUTTON_RIGTH;
+    }
+    
+    else if(BUTTON_CODE < 200)
+    {
+        return LCD_SHIELD_BUTTON_RIGTH;
+    }
+    
+    else if(BUTTON_CODE < 400)
+    {
+        return LCD_SHIELD_BUTTON_RIGTH;
+    }
+
+    else if(BUTTON_CODE < 600)
+    {
+        return LCD_SHIELD_BUTTON_RIGTH;
+    }
+
+    else if(BUTTON_CODE < 800)
+    {
+        return LCD_SHIELD_BUTTON_RIGTH;
+    }
+
+    else
+    {
+        return LCD_SHIELD_NO_BUTTON;
+    }
 }
 
 void setup(void)
 {
-    LCD_CONTROLLER.begin(16,2);
-
     Serial.begin(9600);
-
-    LCD_MENU_SECTION_MAIN();
 }
 
 void loop(void)
 {
   unsigned short BUTTON_CODE = analogRead(LCD_SHIELD_BUTTON);
-
-  Serial.print(BUTTON_CODE);
-
-  if(BUTTON_CODE < 100)
-  {
-    LCD_MENU_SECTION2();
-  }
-  
-  else if(BUTTON_CODE < 400)
-  {
-    LCD_MENU_SECTION1();
-  }
 }
