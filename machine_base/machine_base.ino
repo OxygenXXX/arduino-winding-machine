@@ -48,7 +48,12 @@ void LCD_MENU_SECTION_MAIN()
     LCD_CONTROLLER.clear();
     LCD_CONTROLLER.setCursor(0, 0);
   
-    LCD_CONTROLLER.print("Menu Main");
+    LCD_CONTROLLER.print("Winding Machine:");
+
+    LCD_CONTROLLER.setCursor(0, 1);
+
+    
+    
 }
 
 void LCD_MENU_SECTION1()
@@ -107,9 +112,13 @@ unsigned short BUTTON_INPUT_HANDLER(unsigned short BUTTON_CODE)
 void setup(void)
 {
     Serial.begin(9600);
+  
+    LiquidDisplayInit();
 }
 
 void loop(void)
 {
-  unsigned short BUTTON_CODE = analogRead(LCD_SHIELD_BUTTON);
+  unsigned short SHIELD_BUTTON_CODE = analogRead(LCD_SHIELD_BUTTON);
+
+  
 }
