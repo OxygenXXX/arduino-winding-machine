@@ -20,16 +20,14 @@ LiquidCrystal LCD_CONTROLLER
     LCD_PIN_DATA3, LCD_PIN_DATA4
 );
 
-void LiquidDisplayInit()
-{
-    LCD_CONTROLLER.begin
-    (
-        LCD_DISPLAY_WIDTH, // Set display width
-        LCD_DISPLAY_HEIGHT // Set display height
-    );
-    
-    LCD_CONTROLLER.home(); // Set cursor to home pos
+#define LCD_SHIELD_BUTTON_PIN A0 // SELECT
 
-    LCD_CONTROLLER.noAutoscroll(); // Disable text scrolling
-    LCD_CONTROLLER.noBlink(); // Disable cursor blinking
-}    
+#define LCD_SHIELD_BUTTON_RIGTH 1 // Button "Right" keycode
+#define LCD_SHIELD_BUTTON_LEFT 2 // Button "Left" keycode
+#define LCD_SHIELD_BUTTON_UP 3 // Button "Up" keycode
+#define LCD_SHIELD_BUTTON_DOWN 4 // Button "Down" keycode
+
+#define LCD_SHIELD_BUTTON_SELECT 5 // Button "Select" keycode
+
+#define LCD_SHIELD_NO_BUTTON 0 // No-Button status code
+
