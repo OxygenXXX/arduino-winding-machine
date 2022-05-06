@@ -20,6 +20,20 @@ LiquidCrystal LCD_CONTROLLER
     LCD_PIN_DATA3, LCD_PIN_DATA4
 );
 
+void LiquidDisplayInit()
+{
+    LCD_CONTROLLER.begin
+    (
+        LCD_DISPLAY_WIDTH, // Set display width
+        LCD_DISPLAY_HEIGHT // Set display height
+    );
+    
+    LCD_CONTROLLER.home(); // Set cursor to home pos
+
+    LCD_CONTROLLER.noAutoscroll(); // Disable text scrolling
+    LCD_CONTROLLER.noBlink(); // Disable cursor blinking
+}  
+
 #define LCD_SHIELD_BUTTON_PIN A0 // SELECT
 
 #define LCD_SHIELD_BUTTON_RIGTH 1 // Button "Right" keycode
@@ -91,8 +105,10 @@ void lcd_print_string(unsigned short line_number, String line_text)
     LCD_CONTROLLER.print(line_text); // Print provided text
 }
 
-String LCD_MENU_ROOT_CASES =
+String LCD_MENU_ROOT_CASES[] =
 {
+    "Winding machine:",
+
     "1.Coil diameter", // Coil diameter selector
 
     "2.Coil turns", // Coil turns count selector
@@ -102,12 +118,56 @@ String LCD_MENU_ROOT_CASES =
 
 void LCD_MENU_SECTION_ROOT()
 {
+    unsigned short selected_section = 0;
+
     LCD_CONTROLLER.clear(); // Clear display
 
     LCD_CONTROLLER.setCursor(0, 0); // Set cursor to the start
 
-    LCD_CONTROLLER.print("Winding machine:"); // Print menu logotype
+    LCD_CONTROLLER.print(LCD_MENU_ROOT_CASES[selected_section]); // Print logotype
 
-    
+    selected_section = selected_section + 1;
 
+    LCD_CONTROLLER.setCursor(0, 1);
+
+    LCD_CONTROLLER.print(LCD_MENU_ROOT_CASES[selected_section]);
+
+    unsigned short current_button_code = LCD_BUTTON_INPUT_HANDLER();
+
+    while(true) // Menu buttons handler 
+    {
+        if(current_button_code == LCD_SHIELD_BUTTON_UP)
+        {
+            if(selected_section != 1)
+            {
+                selected_section--; // Decrease selected line number
+
+                lcd_print_string(0, LCD_MENU_ROOT_CASES[selected_section - 1]);
+
+                lcd_print_string(1, LCD_MENU_ROOT_CASES[selected_section]);                
+            }
+
+            else
+            {
+
+            }
+        }
+
+        if(current_button_code == LCD_SHIELD_BUTTON_DOWN)
+        {
+            if(selected_section != 3)
+            {
+                lcd_print_string(0, LCD_MENU_ROOT_CASES[selected_section - 1]);
+
+                lcd_print_string(1, LCD_MENU_ROOT_CASES[selected_section]);
+
+                selected_section++; // Increase selected line number
+            }
+
+            else
+            {
+                
+            }
+        }
+    }
 }
