@@ -36,7 +36,7 @@ void LiquidDisplayInit()
 
 #define LCD_SHIELD_BUTTON_PIN A0 // SELECT
 
-#define LCD_SHIELD_BUTTON_RIGTH 1 // Button "Right" keycode
+#define LCD_SHIELD_BUTTON_RIGTH 1 // Button "Rig9ht" keycode
 #define LCD_SHIELD_BUTTON_LEFT 2 // Button "Left" keycode
 #define LCD_SHIELD_BUTTON_UP 3 // Button "Up" keycode
 #define LCD_SHIELD_BUTTON_DOWN 4 // Button "Down" keycode

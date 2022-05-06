@@ -74,7 +74,7 @@ void setup()
 }
 
 void loop() 
-{
+{  
   int current_button = button_handler();
 
   switch (current_button) 
